@@ -1,4 +1,4 @@
-// File: /Users/kyle/Library/CloudStorage/OneDrive-Personal/KYLE's LEARN/0. AI/CES_K2_AI Automation/my_landing_page/src/app/page.tsx
+// File: /Users/kyle/Library/CloudStorage/OneDrive-Personal/LEARN/0. AI/CES_K2_AI Automation/my_landing_page/src/app/page.tsx
 import * as entry from '../../../src/app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

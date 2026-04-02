@@ -46,7 +46,7 @@ export default function Chatbot() {
                 if (isToolUIPart(part)) {
                   return (
                     <div key={i} className="opacity-50 italic">
-                      [Calling tool: {part.toolName}]
+                      [Calling tool: {(part as any).toolName || 'unknown'}]
                     </div>
                   );
                 }
