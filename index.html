@@ -1,0 +1,198 @@
+<!DOCTYPE html><html class="light" lang="vi"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "outline": "#75786e",
+              "primary-fixed-dim": "#b7cea0",
+              "on-background": "#1c1b1b",
+              "on-surface": "#1c1b1b",
+              "background": "#fcf9f8",
+              "on-tertiary-fixed": "#2f1125",
+              "on-tertiary": "#ffffff",
+              "primary": "#3b4e2a",
+              "on-tertiary-fixed-variant": "#603b51",
+              "surface-variant": "#e5e2e1",
+              "surface-container-lowest": "#ffffff",
+              "inverse-surface": "#313030",
+              "surface": "#fcf9f8",
+              "on-secondary-fixed": "#151e0d",
+              "secondary-fixed": "#dae7ca",
+              "on-primary-fixed-variant": "#394c29",
+              "tertiary-container": "#7c546b",
+              "surface-container-low": "#f6f3f2",
+              "tertiary-fixed-dim": "#eab8d3",
+              "on-tertiary-container": "#ffcde7",
+              "on-primary-container": "#cbe3b3",
+              "surface-bright": "#fcf9f8",
+              "inverse-on-surface": "#f3f0ef",
+              "primary-container": "#526640",
+              "outline-variant": "#c5c8bc",
+              "tertiary": "#623d53",
+              "secondary-container": "#dae7ca",
+              "on-error-container": "#93000a",
+              "on-secondary": "#ffffff",
+              "surface-dim": "#dcd9d9",
+              "error-container": "#ffdad6",
+              "surface-container-highest": "#e5e2e1",
+              "tertiary-fixed": "#ffd8eb",
+              "surface-container": "#f0eded",
+              "secondary-fixed-dim": "#becbaf",
+              "on-error": "#ffffff",
+              "primary-fixed": "#d3eaba",
+              "on-secondary-container": "#5d6851",
+              "inverse-primary": "#b7cea0",
+              "on-primary-fixed": "#0f2003",
+              "on-surface-variant": "#44483f",
+              "on-secondary-fixed-variant": "#3f4a35",
+              "secondary": "#57624b",
+              "surface-container-high": "#eae7e7",
+              "on-primary": "#ffffff",
+              "surface-tint": "#50643e",
+              "error": "#ba1a1a"
+            },
+            fontFamily: {
+              "headline": ["Newsreader"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tonal-shift-surface-container-low { background-color: #f6f3f2; }
+        .tonal-shift-from-surface { background-color: #fcf9f8; }
+        body { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-surface antialiased">
+<!-- 1. Header (TopNavBar) -->
+<header class="bg-[#fcf9f8]/80 dark:bg-[#1c1b1b]/80 backdrop-blur-xl docked full-width top-0 sticky z-50 tonal-shift-surface-container-low">
+<nav class="flex justify-between items-center w-full px-8 py-6 max-w-7xl mx-auto">
+<div class="text-2xl font-['Newsreader'] font-bold text-[#3b4e2a] dark:text-[#fcf9f8]" style="">VN-EXCELLENCE</div>
+<div class="hidden md:flex items-center gap-10">
+<a class="text-[#3b4e2a] dark:text-[#fcf9f8] border-b-2 border-[#526640] pb-1 font-['Newsreader'] italic font-medium transition-colors duration-300" href="#" style="">Giải pháp&nbsp;</a>
+<a class="text-[#44483f] dark:text-[#c5c8bc] font-['Manrope'] hover:text-[#3b4e2a] transition-colors duration-300" href="#" style="">Chuyên gia&nbsp;&nbsp;</a>
+<a class="text-[#44483f] dark:text-[#c5c8bc] font-['Manrope'] hover:text-[#3b4e2a] transition-colors duration-300" href="#" style="">Về chúng tôi</a>
+<a class="text-[#44483f] dark:text-[#c5c8bc] font-['Manrope'] hover:text-[#3b4e2a] transition-colors duration-300" href="#" style="">Liên hệ</a>
+</div>
+<button class="bg-primary text-on-primary px-8 py-3 rounded-full font-medium active:scale-95 transition-transform" style="">
+                Bắt đầu ngay
+            </button>
+</nav>
+</header>
+<main>
+<!-- 2. Hero Section -->
+<section class="relative pt-20 pb-32 px-8 overflow-hidden">
+<div class="max-w-7xl mx-auto flex flex-col items-center text-center">
+<h1 class="font-headline text-6xl md:text-8xl text-primary tracking-tight mb-16 max-w-4xl" style="">10X ngay hôm nay</h1>
+<div class="relative w-full max-w-6xl mt-8">
+<!-- Wide Sage Background Layer -->
+<div class="absolute inset-0 bg-secondary-fixed rounded-lg transform -rotate-1 translate-y-8 h-full w-full"></div>
+<!-- Overlapping Dashboard Image -->
+<div class="relative z-10 bg-surface-container-lowest rounded-lg p-4 md:p-8 shadow-sm">
+<img alt="Professional team consultation in a modern glass office overlooking a high-tech factory" class="w-full h-auto object-cover rounded-[24px]" data-alt="clean minimal saas dashboard interface showing clean typography, sage green accents, and professional data visualization charts" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2lYgzGBroavgnKUwgFD8A-kn4gO8KAJSojqf5kaC0b88GzZnAz1329IuHDL0AHS62R5Xz-G3aeFdgwm8znyhDkZipvlpQqo8LCVbCPALyW9fotQMcXxV5wsVPB68JylDqdsCfT93N7eWMZHLCzbdiUg3G3aDXgTNZ_MBwds3QeqMg_DKbhqBuchvY3qUzdrLTKTmuuT3ZO-O1TyXUJFgGIvyjWD3vdl_LFiapX0OAD5GyGOr3Yui6qWzzDr9vXUAGYkKOCzDLpuI" style="">
+</div>
+</div>
+</div>
+</section>
+<!-- 3. Logo Cloud -->
+<section class="py-20 bg-surface">
+<div class="max-w-7xl mx-auto px-8 text-center">
+<p class="font-label text-sm uppercase tracking-widest text-on-surface-variant mb-12" style="">Được tin dùng bởi</p>
+<div class="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-50 grayscale">
+<span class="text-2xl font-headline font-bold" style="">ARCANE</span>
+<span class="text-2xl font-headline font-bold" style="">LUMIERE</span>
+<span class="text-2xl font-headline font-bold" style="">NORDIC</span>
+<span class="text-2xl font-headline font-bold" style="">OBSIDIAN</span>
+<span class="text-2xl font-headline font-bold" style="">VERIDIAN</span>
+</div>
+</div>
+</section>
+<!-- 4. Features Section -->
+<section class="py-32 px-8 bg-surface-container-low">
+<div class="max-w-7xl mx-auto">
+<div class="mb-20">
+<span class="font-label text-sm font-bold tracking-[0.2em] text-primary-container" style="">GIẢI PHÁP</span>
+<h2 class="font-headline text-5xl md:text-6xl text-on-surface mt-6 max-w-2xl" style="">Tối ưu hoá cấu trúc vận hành doanh nghiệp</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+<!-- Feature 1 -->
+<div class="space-y-6">
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="auto_awesome" style="">auto_awesome</span>
+</div>
+<h3 class="text-xl font-bold font-body text-on-surface" style="">LEAN</h3>
+<p class="text-on-surface-variant leading-relaxed" style="">Các giải pháp Lean giúp loại bỏ các hoạt động không tạo ra giá trị, giảm lãng phí, tăng năng suất và hiệu quả.</p>
+</div>
+<!-- Feature 2 -->
+<div class="space-y-6">
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="grid_view" style="">grid_view</span>
+</div>
+<h3 class="text-xl font-bold font-body text-on-surface" style="">SIX SIGMA</h3>
+<p class="text-on-surface-variant leading-relaxed" style="">Các giải pháp Six Sigma giúp giảm sai lỗi, kiểm soát biến động và đạt các yêu cầu quốc tế.</p>
+</div>
+<!-- Feature 3 -->
+<div class="space-y-6">
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="analytics" style="">analytics</span>
+</div>
+<h3 class="text-xl font-bold font-body text-on-surface" style="">VALUE CHAIN</h3>
+<p class="text-on-surface-variant leading-relaxed" style="">Minh bạch về truy suất nguồn gốc, giảm rủi ro.</p>
+</div>
+<!-- Feature 4 -->
+<div class="space-y-6">
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="security" style="">security</span>
+</div>
+<h3 class="text-xl font-bold font-body text-on-surface" style="">VALUE INNOVATION</h3>
+<p class="text-on-surface-variant leading-relaxed" style="">Sáng tạo không chỉ là cải tiến mà tạo ra giá trị khác biệt.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Signature Component: Feature Pull-Quote -->
+<section class="py-32 px-8 bg-surface">
+<div class="max-w-4xl mx-auto relative py-16">
+<div class="absolute top-0 left-0 -translate-x-8 -translate-y-4 w-32 h-32 bg-primary-fixed rounded-full opacity-30 z-0"></div>
+<blockquote class="font-headline text-4xl md:text-5xl italic text-primary text-center leading-tight relative z-10" style="">
+                    "Các giải pháp của VN-Excellence hướng đến vận hành hoàn hảo, giảm rủi ro từ cốt lõi"</blockquote>
+<cite class="block text-center mt-8 font-label text-on-surface-variant not-italic">— Giám đốc Sáng tạo, Arcane Studio</cite>
+</div>
+</section>
+<!-- 5. Image Section -->
+<section class="px-8 pb-32">
+<div class="max-w-7xl mx-auto">
+<div class="w-full aspect-[21/9] overflow-hidden rounded-xl">
+<img alt="Sleek modern digital dashboard showing growth charts and keywords like LEAN, SIX SIGMA, and VALUE CHAIN" class="w-full h-full object-cover" data-alt="A sleek, modern digital dashboard showing a map with continuous growth charts and data visualizations. Strategically placed around the charts are the keywords: LEAN, SIX SIGMA, HIGH PERFORMANCE WORKPLACE, VALUE CHAIN, VALUE INNOVATION, CX, AI &amp; TECHNOLOGY." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFHRUaMcFcI6E0XyZfAFbevpVh8Tplop6cx-cNn_zyDpocFt_k_ne4Dx8PfWdsPS4y7U_njx55gnB_9stUEzGSN3ZSKKG_BLMyOs0auJmBM5QmiazJ3Pg8d-ILAb90MZqPldIbtGiAVmkmzQFbCOZDflbY1Hl7yK5IjnkfKMhXj_fuHrhUvwZmM2qvSEEkhR3m4aap9JJNCDLaRUjcQKQlHwn5RFQrJOCaBiKjXUUC02clSKFMvBiZbv0uvU6J3wlbOrNO0oYOM6c" style="">
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#f6f3f2] dark:bg-[#1c1b1b] full-width p-12 tonal-shift-from-surface">
+<div class="flex flex-col md:flex-row justify-between items-center w-full max-w-7xl mx-auto gap-8">
+<div class="text-lg font-['Newsreader'] font-bold text-[#3b4e2a] dark:text-[#fcf9f8]" style="">VN-EXCELLENCE</div>
+<div class="flex flex-wrap justify-center gap-8 font-['Manrope'] text-sm tracking-wide">
+<a class="text-[#44483f] hover:underline decoration-[#9CA88E] underline-offset-4 transition-opacity opacity-80 hover:opacity-100" href="#" style="">Điều khoản</a>
+<a class="text-[#44483f] hover:underline decoration-[#9CA88E] underline-offset-4 transition-opacity opacity-80 hover:opacity-100" href="#" style="">Bảo mật</a>
+<a class="text-[#44483f] hover:underline decoration-[#9CA88E] underline-offset-4 transition-opacity opacity-80 hover:opacity-100" href="#" style="">Cài đặt</a>
+</div>
+<p class="text-[#44483f] font-['Manrope'] text-sm tracking-wide" style="">© 2026&nbsp;<span style="color: rgb(59, 78, 42); font-family: Newsreader; font-size: 18px; letter-spacing: normal;">VN-EXCELLENCE</span>. Bảo lưu mọi quyền.</p>
+</div>
+</footer>
+</body></html>
