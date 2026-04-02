@@ -1,0 +1,72 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  darkMode: "class",
+  content: [
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        "outline": "#75786e",
+        "primary-fixed-dim": "#b7cea0",
+        "on-background": "#1c1b1b",
+        "on-surface": "#1c1b1b",
+        "background": "#fcf9f8",
+        "on-tertiary-fixed": "#2f1125",
+        "on-tertiary": "#ffffff",
+        "primary": "#3b4e2a",
+        "on-tertiary-fixed-variant": "#603b51",
+        "surface-variant": "#e5e2e1",
+        "surface-container-lowest": "#ffffff",
+        "inverse-surface": "#313030",
+        "surface": "#fcf9f8",
+        "on-secondary-fixed": "#151e0d",
+        "secondary-fixed": "#dae7ca",
+        "on-primary-fixed-variant": "#394c29",
+        "tertiary-container": "#7c546b",
+        "surface-container-low": "#f6f3f2",
+        "tertiary-fixed-dim": "#eab8d3",
+        "on-tertiary-container": "#ffcde7",
+        "on-primary-container": "#cbe3b3",
+        "surface-bright": "#fcf9f8",
+        "inverse-on-surface": "#f3f0ef",
+        "primary-container": "#526640",
+        "outline-variant": "#c5c8bc",
+        "tertiary": "#623d53",
+        "secondary-container": "#dae7ca",
+        "on-error-container": "#93000a",
+        "on-secondary": "#ffffff",
+        "surface-dim": "#dcd9d9",
+        "error-container": "#ffdad6",
+        "surface-container-highest": "#e5e2e1",
+        "tertiary-fixed": "#ffd8eb",
+        "surface-container": "#f0eded",
+        "secondary-fixed-dim": "#becbaf",
+        "on-error": "#ffffff",
+        "primary-fixed": "#d3eaba",
+        "on-secondary-container": "#5d6851",
+        "inverse-primary": "#b7cea0",
+        "on-primary-fixed": "#0f2003",
+        "on-surface-variant": "#44483f",
+        "on-secondary-fixed-variant": "#3f4a35",
+        "secondary": "#57624b",
+        "surface-container-high": "#eae7e7",
+        "on-primary": "#ffffff",
+        "surface-tint": "#50643e",
+        "error": "#ba1a1a"
+      },
+      fontFamily: {
+        "headline": ["Newsreader", "serif"],
+        "body": ["Manrope", "sans-serif"],
+        "label": ["Manrope", "sans-serif"]
+      },
+      borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+    },
+  },
+  plugins: [
+    require('@tailwindcss/container-queries'),
+    require('@tailwindcss/forms')
+  ]
+};
