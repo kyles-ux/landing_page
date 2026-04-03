@@ -357,6 +357,33 @@
             margin: 0;
         }
 
+        /* Câu hỏi gợi ý */
+        .chat-suggestions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        .chat-suggestion-chip {
+            background: #ffffff;
+            border: 1px solid #526640;
+            color: #526640;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-family: 'Manrope', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .chat-suggestion-chip:hover {
+            background: #526640;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(82, 102, 64, 0.2);
+        }
+
         /* Responsive cho di động */
         @media (max-width: 480px) {
             .chat-window {
@@ -513,10 +540,13 @@
     </div>
     <!-- Khu vực tin nhắn -->
     <div class="chat-messages" id="chat-messages">
-        <div class="chat-welcome">
+        <div class="chat-welcome" id="chat-welcome">
             <span class="chat-welcome-icon">🌿</span>
             <h4>Xin chào!</h4>
             <p>Tôi là trợ lý AI của VN-Excellence.<br>Hãy hỏi tôi bất cứ điều gì về LEAN, Six Sigma, Value Chain hay các giải pháp doanh nghiệp.</p>
+            <div class="chat-suggestions" id="chat-suggestions-container">
+                <!-- Nút gợi ý sẽ được chèn tự động vào đây -->
+            </div>
         </div>
     </div>
     <!-- Khu vực nhập tin nhắn -->
@@ -528,6 +558,7 @@
     </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 <script>
 // ============================================================
 // CẤU HÌNH API LLM TÙY CHỈNH (OpenAI-compatible)
@@ -553,6 +584,65 @@ const chatWindow = document.getElementById('chat-window');
 const chatMessages = document.getElementById('chat-messages');
 const chatInput = document.getElementById('chat-input');
 const chatSendBtn = document.getElementById('chat-send-btn');
+
+// ============================================================
+// CẤU HÌNH CÂU HỎI THƯỜNG GẶP (Tự động tải từ Google Sheets)
+// ============================================================
+const FAQ_CSV_URL = 'https://docs.google.com/spreadsheets/d/1zOD-dyvs2qGb7t-GFO6itqdx-H2JpjebOD_p1teJ5Ew/export?format=csv';
+let faqData = {}; // Lưu trữ cặp Câu hỏi -> Câu trả lời
+
+function loadFAQ() {
+    fetch(FAQ_CSV_URL)
+        .then(response => response.text())
+        .then(csvText => {
+            Papa.parse(csvText, {
+                header: true,
+                skipEmptyLines: true,
+                complete: function(results) {
+                    const suggestionsContainer = document.getElementById('chat-suggestions-container');
+                    if (!suggestionsContainer) return;
+                    
+                    suggestionsContainer.innerHTML = ''; // Xoá trắng
+                    
+                    results.data.forEach(row => {
+                        const q = row['Question'];
+                        const a = row['Answer'];
+                        if (q && a) {
+                            faqData[q.trim()] = a.trim();
+                            const btn = document.createElement('button');
+                            btn.className = 'chat-suggestion-chip';
+                            btn.textContent = q.trim();
+                            btn.onclick = () => handleFAQClick(q.trim());
+                            suggestionsContainer.appendChild(btn);
+                        }
+                    });
+                }
+            });
+        })
+        .catch(err => console.error("Lỗi khi tải FAQ data từ Google Sheets:", err));
+}
+
+// Gọi hàm load FAQ khi khởi chạy
+loadFAQ();
+
+function handleFAQClick(question) {
+    // Thêm tin nhắn câu hỏi
+    addMessage(question, 'user');
+    chatHistory.push({ role: 'user', content: question });
+    
+    // Ẩn bảng welcome
+    const welcome = document.getElementById('chat-welcome');
+    if (welcome) welcome.remove();
+    
+    // Hiển thị đang gõ và trả lời ngay từ file (không gọi API LLM tốn phí)
+    showTyping();
+    setTimeout(() => {
+        hideTyping();
+        const answer = faqData[question];
+        addMessage(answer, 'bot');
+        chatHistory.push({ role: 'assistant', content: answer });
+    }, 600); // 600ms giả lập độ trễ phản hồi
+}
 
 // === MỞ / ĐÓNG CỬA SỔ CHAT ===
 function toggleChat() {
@@ -587,7 +677,7 @@ function scrollToBottom() {
 // === THÊM TIN NHẮN VÀO GIAO DIỆN ===
 function addMessage(content, role) {
     // Xóa tin nhắn chào mừng nếu còn
-    const welcome = chatMessages.querySelector('.chat-welcome');
+    const welcome = document.getElementById('chat-welcome');
     if (welcome) welcome.remove();
 
     const msgEl = document.createElement('div');
