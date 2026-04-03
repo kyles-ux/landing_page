@@ -638,21 +638,17 @@ VN-Excellence ra đời với sứ mệnh đồng hành cùng các doanh nghiệ
     document.getElementById('contactForm').addEventListener('submit', async function(e) {
         e.preventDefault();
         
+        // Cảnh báo debug
+        alert("Đang xử lý gửi tin nhắn với phiên bản mã nguồn mới nhất! Nếu bạn thấy dòng này, Cache đã được xóa.");
+
         // Link Web App của Google Apps Script
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxnmZKSDirWF8Zp0dmlHgd0Y-CfVNEv3Ho9wUUDU_HCTjPK7zPcHABKXmOCAoa1pEjY/exec';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw3XQubFzwVq7DvvtqYPKq4dDhPUxXxcKlpiTVNuxUdR3Yi8ZBENu9E_iGwxXatD4CZ/exec';
         
         const submitBtn = document.getElementById('submitBtn');
         const btnText = document.getElementById('btnText');
         const btnLoading = document.getElementById('btnLoading');
         const formSuccess = document.getElementById('formSuccess');
         const formError = document.getElementById('formError');
-
-        // Lấy dữ liệu gửi đi
-        const formData = new FormData();
-        formData.append('Họ và tên', document.getElementById('contactName').value);
-        formData.append('Email công việc', document.getElementById('contactEmail').value);
-        formData.append('Nhu cầu tư vấn', document.getElementById('contactMessage').value);
-        formData.append('Thời gian', new Date().toLocaleString('vi-VN'));
 
         // Cập nhật UI loading
         submitBtn.disabled = true;
@@ -661,14 +657,26 @@ VN-Excellence ra đời với sứ mệnh đồng hành cùng các doanh nghiệ
         formSuccess.classList.add('hidden');
         formError.classList.add('hidden');
 
+        // Xử lý dữ liệu chuẩn dạng tham số URL để Google Apps script hiểu qua e.parameter
+        const formObj = this;
+        const formData = new FormData(formObj);
+        const params = new URLSearchParams();
+        for (const [key, value] of formData.entries()) {
+            params.append(key, value);
+        }
+        params.append('Thời gian', new Date().toLocaleString('vi-VN'));
+
         try {
-            await fetch(GOOGLE_SCRIPT_URL, {
+            await fetch(GOOGLE_SCRIPT_URL + "?t=" + Date.now(), {
                 method: 'POST',
-                body: formData,
-                mode: 'no-cors' // Google Sheets trả về CORS nên phải dùng no-cors
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: params
             });
             formSuccess.classList.remove('hidden');
-            this.reset();
+            formObj.reset();
         } catch (error) {
             formError.classList.remove('hidden');
         } finally {
