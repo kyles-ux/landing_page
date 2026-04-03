@@ -596,7 +596,7 @@ function loadFAQ() {
         .then(response => response.text())
         .then(csvText => {
             Papa.parse(csvText, {
-                header: true,
+                header: false,
                 skipEmptyLines: true,
                 complete: function(results) {
                     const suggestionsContainer = document.getElementById('chat-suggestions-container');
@@ -605,9 +605,14 @@ function loadFAQ() {
                     suggestionsContainer.innerHTML = ''; // Xoá trắng
                     
                     results.data.forEach(row => {
-                        const q = row['Question'];
-                        const a = row['Answer'];
-                        if (q && a) {
+                        // Google sheets export might have empty rows or Question/Answer strings
+                        if (!row || row.length < 2) return;
+                        
+                        const q = row[0];
+                        const a = row[1];
+                        
+                        // Bỏ qua dòng tiêu đề hoặc dòng trống
+                        if (q && a && q !== 'Question' && q !== undefined) {
                             faqData[q.trim()] = a.trim();
                             const btn = document.createElement('button');
                             btn.className = 'chat-suggestion-chip';
